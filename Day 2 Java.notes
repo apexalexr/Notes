@@ -1,5 +1,5 @@
 -----------------------------------------------------------
-    Exceptions
+	Exceptions
 -----------------------------------------------------------
 
 
@@ -20,17 +20,17 @@ Throwable:
  		class ChildClass extends ParentClass { };
 
  		public class ExceptionDemo {
-    		public static void main(String[] args) {
-		        try {
-		            throw new ChildClass();
-		        }
+			public static void main(String[] args) {
+				try {
+					throw new ChildClass();
+				}
 				catch(ParentClass p) {
 					System.out.println("Caught ParentClass exception");
-		        }
-		        catch(ChildClass e) {
+				}
+				catch(ChildClass e) {
 					System.out.println("Caught ChildClass exception");
 				}
-    		}
+			}
 		}
 	[\java]
 
@@ -194,7 +194,7 @@ Throwable:
 	[\java]
 
 -----------------------------------------------------------
-    Properties
+	Properties
 -----------------------------------------------------------
 
 Quick Low Down:
@@ -202,7 +202,7 @@ Quick Low Down:
 	. Appconfig.PROPERTIES.getProperties("Key");
 
 -----------------------------------------------------------
-    Expected Exceptions
+	Expected Exceptions
 -----------------------------------------------------------
 
 	. Some BS with JUNIT that we can't really look at because JUnit barely works with our Eclipse.
@@ -305,12 +305,12 @@ Quick Low Down:
 
 
 -----------------------------------------------------
-    Apache Logging (Apache Log4j)
+	Apache Logging (Apache Log4j)
 -----------------------------------------------------------
 
 	- Some XML crap
 
 -----------------------------------------------------------
-    Title
+	Title
 -----------------------------------------------------------
 

@@ -1,11 +1,11 @@
 -----------------------------------------------------------
-    Abstract Classes
+	Abstract Classes
 -----------------------------------------------------------
 
 [java]
 	abstract class Customer {
-	    // Methods and fields
-	    public abstract void displayDetails(); //This is an abstract method
+		// Methods and fields
+		public abstract void displayDetails(); //This is an abstract method
 	}	
 	[\java]
 
@@ -19,13 +19,13 @@
 
 	[java]
 	final class RegularCustomer extends Customer {
-	    
-	    @Override
-	    public void displayDetails() {               // Overriding the abstract method of parent class
-	        // Implementation
-	    }
-	    
-	    // Other methods
+		
+		@Override
+		public void displayDetails() {			   // Overriding the abstract method of parent class
+			// Implementation
+		}
+		
+		// Other methods
 	}
 [\java]
 
@@ -112,7 +112,7 @@ Abstract Quiz 1:
 			gs.setTestScore(2, 71);
 			gs.setTestScore(3, 55);
 			gs.generateResult();
-			System.out.println("Name:    " + gs.getName());
+			System.out.println("Name:	" + gs.getName());
 			System.out.println("Result:  " + gs.getResult() + "\n");
 			
 			Student ugs = new UndergraduateStudent("Mehul");
@@ -121,14 +121,14 @@ Abstract Quiz 1:
 			ugs.setTestScore(2, 71);
 			ugs.setTestScore(3, 55);
 			ugs.generateResult();
-			System.out.println("Name:    " + ugs.getName());
+			System.out.println("Name:	" + ugs.getName());
 			System.out.println("Result:  " + ugs.getResult() + "\n");
 		}
 	}
 [\java]
 
 -----------------------------------------------------------
-    Interfaces
+	Interfaces
 -----------------------------------------------------------
 ========================================================================================================================
 Interface Facts:
@@ -149,63 +149,63 @@ Interface Facts:
 
 [java]
 	public interface Student {
-	    int TOTAL_MAXIMUM_MARKS = 400;
-	    void calcPercentage();
+		int TOTAL_MAXIMUM_MARKS = 400;
+		void calcPercentage();
 	}
 
 	public class Intern implements Student{
-	    
-	    private int marksSecured;
-	    private int projectMarks;
-	    
-	    Intern(int marksSecured, int projectMarks) {
-	        this.marksSecured = marksSecured;
-	        this.projectMarks = projectMarks;
-	    }
-	    
-	    public void calcPercentage() {
-	        if(this.marksSecured + this.projectMarks > 400) {
-	            System.out.println("Please enter the correct marks");
-	            return;
-	        }
-	        System.out.println("The total aggregate percentage secured by the intern is " + ((double)marksSecured+projectMarks)/TOTAL_MAXIMUM_MARKS*100);
-	    }
+		
+		private int marksSecured;
+		private int projectMarks;
+		
+		Intern(int marksSecured, int projectMarks) {
+			this.marksSecured = marksSecured;
+			this.projectMarks = projectMarks;
+		}
+		
+		public void calcPercentage() {
+			if(this.marksSecured + this.projectMarks > 400) {
+				System.out.println("Please enter the correct marks");
+				return;
+			}
+			System.out.println("The total aggregate percentage secured by the intern is " + ((double)marksSecured+projectMarks)/TOTAL_MAXIMUM_MARKS*100);
+		}
 	}
 
 	public class Trainee implements Student{
-	    
-	    int marksSecured;
-	    
-	    public Trainee(int marksSecured) {
-	        this.marksSecured = marksSecured;
-	    }
-	    
-	    
-	    public void calcPercentage() {
-	        if(this.marksSecured > 400) {
-	            System.out.println("Please enter the correct marks");
-	            return;
-	        }
-	        System.out.println("The total aggregate percentage secured by the trainee is " + (double)marksSecured/TOTAL_MAXIMUM_MARKS*100);
-	    }
-	    
+		
+		int marksSecured;
+		
+		public Trainee(int marksSecured) {
+			this.marksSecured = marksSecured;
+		}
+		
+		
+		public void calcPercentage() {
+			if(this.marksSecured > 400) {
+				System.out.println("Please enter the correct marks");
+				return;
+			}
+			System.out.println("The total aggregate percentage secured by the trainee is " + (double)marksSecured/TOTAL_MAXIMUM_MARKS*100);
+		}
+		
 	}
 
 	public class Tester {
 
-	    public static void main(String[] args) {
-	        // TODO Auto-generated method stub
-	        Intern i = new Intern(283, 77);
-	        Trainee t = new Trainee(370);
-	        i.calcPercentage();
-	        t.calcPercentage();
-	    }
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			Intern i = new Intern(283, 77);
+			Trainee t = new Trainee(370);
+			i.calcPercentage();
+			t.calcPercentage();
+		}
 
 	}
 [\java]
 
 -----------------------------------------------------------
-    Variable Args
+	Variable Args
 -----------------------------------------------------------
 
 ================================================================================
@@ -219,14 +219,14 @@ VarArgs Facts:
 
 This is the format for varargs ->	[java]
 										public float orderProducts(Product... products) {
-										    // Statements
+											// Statements
 										}
 									[\java]
 
 
 
 -----------------------------------------------------------
-    Memory Management
+	Memory Management
 -----------------------------------------------------------
 
 ===========================================================================================================
@@ -248,6 +248,6 @@ Order of Creation:
 	3. Reference variable in stack refers to the object in the Heap
 
 -----------------------------------------------------------
-    Code Analysis
+	Code Analysis
 -----------------------------------------------------------
 
