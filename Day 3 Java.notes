@@ -16,7 +16,7 @@
 - Strings are immutable, meaning they cannot be altered or changed
 - string += "x"; is an illusion that the string is being altered however what is really happening is that a new String
 	is being made and assigned to that reference
-	. What_You_See: 			string += "x";
+	. What_You_See:				string += "x";
 	. What_Actually_Happens:	string = string.concat("x");
 								-----------or---------------
 								string = string + "x"; //As you can see it is actually being made and reassigned.
@@ -39,3 +39,11 @@
 		- Same as above
 ==================================================================
 
+-----------------------------------------------------------
+	Wrapper Classes
+-----------------------------------------------------------
+
+- Used to represent primitive values as objects
+- Character wrapper = new Character('x');
+- Character wrapper = 'x';	//Java5 and up includes autoboxing
+- char c = wrapper 			//This is unboxing to remove a wrapper
