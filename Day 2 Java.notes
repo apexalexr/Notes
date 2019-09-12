@@ -1,0 +1,316 @@
+-----------------------------------------------------------
+    Exceptions
+-----------------------------------------------------------
+
+
+=======================================================================================================================
+Throwable:
+- Checked:		Exceptions that are checked by the compiler and must be dealt with before running the code.
+					. I.E. Class Not Found
+- Unchecked:	Runtime Exceptions such as Arithmetic errors and ArrayOutOfBounds that are not checked by the compiler.
+- Errors:		Errors are serious abnormal conditions that are unchecked.
+
+- Throws will throw back to the calling method
+- Must declare that the method throws exceptions public void method() throws Exception{}
+- throw is used where the error occurs
+- When catching multiple exceptions the parent class should come after
+
+	[java]
+		class ParentClass extends Exception { };
+ 		class ChildClass extends ParentClass { };
+
+ 		public class ExceptionDemo {
+    		public static void main(String[] args) {
+		        try {
+		            throw new ChildClass();
+		        }
+				catch(ParentClass p) {
+					System.out.println("Caught ParentClass exception");
+		        }
+		        catch(ChildClass e) {
+					System.out.println("Caught ChildClass exception");
+				}
+    		}
+		}
+	[\java]
+
+- When catching Errors and Checked Exceptions you must declare throws Exception
+
+	[java]
+		public class Testing {
+		public static void main(String[] args) throws Exception {
+				Throw t = new Throw();
+				try {
+					t.thrower(5);
+				}
+				catch (Exception e){
+					System.out.println(e);
+				}
+
+				try {
+					t.nonthrower2(1);
+				}
+				catch (Throwable e) {
+					System.out.println(e);
+				}
+			}
+		}
+
+		class Throw {
+			int[] arr = {1,2,3,4,5};
+	
+			public int thrower(int i) throws ArrayIndexOutOfBoundsException {
+				return arr[i];
+			}
+			public int nonthrower(int i) {
+				return arr[i];
+			}
+			public void nonthrower2(int i) throws Throwable{	//This or Error would work because this class does not
+				NotaClass nt = new NotaClass();					//	exist
+			}
+		}
+	[\java]
+=======================================================================================================================	
+
+#Custom Exceptions#
+
+	[java]
+		class UserException extends Exception{}		//This exception just merely changes the name from Exception.___
+													//	to UserException.____
+		class OtherUserException extends Exception{	//This allows you to give custom Strings to the Exception
+			public OtherUserException(String s) {
+				super(s);
+			}
+		}
+	[\java]
+
+
+	This is a basic use of suppressed exceptions so that you can display multiple Errors/Exceptions
+
+	#Validator#
+	[java]
+		public class Validator {
+			public void validate(Applicant applicant) throws Exception {	
+				if(!this.isValidName(applicant.getApplicantName())) {
+					if(!this.isValidPost(applicant.getPostApplied())) {
+						if(!this.isValidAge(applicant.getApplicantAge())) {
+							Exception e = new InvalidNameException();
+							e.addSuppressed(new InvalidPostException());
+							e.addSuppressed(new InvalidAgeException());
+							throw e;
+						}
+						Exception e = new InvalidNameException();
+						e.addSuppressed(new InvalidPostException());
+						throw e;
+					}
+					throw new InvalidNameException();
+				}
+				if(!this.isValidAge(applicant.getApplicantAge())) {
+					if(!this.isValidPost(applicant.getPostApplied())) {
+						if(!this.isValidName(applicant.getApplicantName())) {
+							Exception e = new InvalidAgeException();
+							e.addSuppressed(new InvalidPostException());
+							e.addSuppressed(new InvalidNameException());
+							throw e;
+						}
+						Exception e = new InvalidAgeException();
+						Exception p = new InvalidPostException();
+						e.addSuppressed(p);
+						throw e;
+					}
+					throw new InvalidAgeException();
+				}
+				
+				if(!this.isValidPost(applicant.getPostApplied())) {
+					if(!this.isValidName(applicant.getApplicantName())) {
+						if(!this.isValidAge(applicant.getApplicantAge())) {
+							Exception e = new InvalidPostException();
+							e.addSuppressed(new InvalidNameException());
+							e.addSuppressed(new InvalidAgeException());
+							throw e;
+						}
+						Exception e = new InvalidPostException();
+						e.addSuppressed(new InvalidNameException());
+						throw e;
+					}
+					throw new InvalidPostException();
+				}
+				
+				System.out.println("All values are valid.");
+			}
+			
+			public boolean isValidName(String name) {
+				if(name == null || name.isEmpty()) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+			public boolean isValidPost(String post) {
+				switch (post) {
+					case "Probationary Officer":
+					case "Assistant":
+					case "Special Cadre Officer":
+						return true;
+					default:
+						return false;
+				}
+			}
+			public boolean isValidAge(Integer age) {
+				if(age >= 18 && age <=35) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+	[\java]
+
+	#Tester#
+	[java]
+		public class Tester {
+			public static void main(String[] args) {
+				Applicant a = new Applicant();
+				Integer age = 17;
+				String name = "";
+				String post = "Assistat";
+				a.setApplicantAge(age);
+				a.setApplicantName(name);
+				a.setPostApplied(post);
+				Validator v = new Validator();
+				try {
+					v.validate(a);
+				}
+				catch (Exception  e) {
+					System.out.println(e.getMessage());
+					for(Throwable f: e.getSuppressed()) {
+						System.out.println(f.getMessage());
+					}
+				}
+			}
+		}												
+	[\java]
+
+-----------------------------------------------------------
+    Properties
+-----------------------------------------------------------
+
+Quick Low Down:
+	. Used to access key and value pairs
+	. Appconfig.PROPERTIES.getProperties("Key");
+
+-----------------------------------------------------------
+    Expected Exceptions
+-----------------------------------------------------------
+
+	. Some BS with JUNIT that we can't really look at because JUnit barely works with our Eclipse.
+	. @Rule has to be public (Tests have to be public)
+	. Try out how to do it on other stuff
+	. @Rule and @Tests
+	. You expect the exception before something happens.
+	. e.expectException();
+	. e.expectMessage();
+
+	. Usage of testing and asserting
+	[java]
+		import org.junit.*;
+		import org.junit.rules.ExpectedException;
+
+		public class EmployeeTest {
+
+			@Rule
+			public ExpectedException ee = ExpectedException.none();
+			
+			@Test
+			public void calculateYearlySalaryValidTest() {
+				
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(53);
+				e.setMonthlySalary(15000);
+				System.out.println(e.calculateYearlySalary());
+				Assert.assertTrue(e.calculateYearlySalary()==196200);
+				Assert.assertEquals((double)196200, (double) e.calculateYearlySalary(),0);
+				
+			}
+			
+			@Test
+			public void validateInvalidNameTest() throws Exception {
+				
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(38);
+				e.setMonthlySalary(20000);
+				e.setName("John");
+				ee.expect(InvalidNameException.class);
+				ee.expectMessage("Invalid employee name");
+				v.validate(e);
+				System.out.println(e.calculateYearlySalary());
+				
+			}
+			@Test
+			public void validateInvalidAgeTest() throws Exception {
+				
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(12);
+				e.setMonthlySalary(20000);
+				e.setName("Yuvraj Singh");
+				ee.expect(InvalidAgeException.class);
+				ee.expectMessage("Invalid employee age");
+				v.validate(e);
+				
+			}
+			
+			@Test
+			public void isvalidNameInvalidNameTest() throws Exception {
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(45);
+				e.setMonthlySalary(20000);
+				e.setName("John");
+				Assert.assertFalse(v.isValidName(e.getName()));
+			}
+			@Test
+			public void isvalidNameValidNameTest() throws Exception {
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(45);
+				e.setMonthlySalary(20000);
+				e.setName("Yuvraj Singh");
+				Assert.assertTrue(v.isValidName(e.getName()));
+			}
+			@Test
+			public void isvalidAgeInvalidAgeTest() throws Exception {
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(12);
+				e.setMonthlySalary(20000);
+				e.setName("Yuvraj Singh");
+				Assert.assertFalse(v.isValidAge(e.getAge()));
+			}
+			@Test
+			public void isvalidAgeValidAgeTest() throws Exception {
+				Employee e = new Employee();
+				Validator v = new Validator();
+				e.setAge(23);
+				e.setMonthlySalary(20000);
+				e.setName("Yuvraj Singh");
+				Assert.assertTrue(v.isValidAge(e.getAge()));
+			}
+		}
+	[\java]
+
+
+-----------------------------------------------------
+    Apache Logging (Apache Log4j)
+-----------------------------------------------------------
+
+	- Some XML crap
+
+-----------------------------------------------------------
+    Title
+-----------------------------------------------------------
+
