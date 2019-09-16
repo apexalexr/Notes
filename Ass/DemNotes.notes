@@ -1,0 +1,712 @@
+-----------------------------------------------------------
+	Assessment
+-----------------------------------------------------------
+
+Q1 of 25
+What is the output of the following code?
+[java]
+	public class TestArray {
+
+		static void getHighestValue(int arr[]) {
+			int highestValue = arr[0];
+			for (int i = 1; i < arr.length; i++)
+				if (highestValue < arr[i])
+					highestValue = arr[i];
+
+			System.out.println(highestValue);
+		}
+
+		public static void main(String args[]) {
+			int x[] = {12, 14, 5, 4, 2, 7};
+			getHighestValue(x);
+		}
+	}
+[\java]
+
+4
+12
+7
+!14!
+
+
+========================================================================================================
+
+
+Q2 of 25
+Consider the following java classes given below:
+[]
+	public class Animal {
+		public Animal() {
+			 System.out.println("Animal creation");
+		}
+
+		void eat() {
+			System.out.println("eat");
+		}
+
+		void work() {
+			System.out.println("work");
+		}
+
+	}
+
+	public class Dog extends Animal {
+		public Dog() {
+			super();
+			System.out.println("Dog");
+		}
+
+		void eat() {
+			System.out.println("Eating food");
+		}
+
+		void work() {
+			super.eat();
+		}
+	}
+
+	public class Tester {
+
+		public static void main(String[] args) {
+			Animal a=new Dog();
+			a.work();
+			a.eat();
+		}
+	}
+[\]
+
+!Animal creation Dog eat Eating food!
+Dog Animal creation Eating food eat
+Animal creation Dog eat
+Unresolved compilation problem: Must override a superclass method
+
+
+========================================================================================================
+
+
+Q3 of 25
+What is the output of the following code?
+[]
+	public class StaticBlock {
+	 int a=40;
+		static{
+			System.out.println("Static Block");
+		}
+		static{}
+		static{}
+		
+		public static void main(String[] args) {
+			System.out.println(a);
+		}
+	}
+[\]
+
+!Unresolved compilation problem: Cannot make a static reference to the non-static field a!
+Static Block 40
+40
+Static Block
+
+========================================================================================================
+
+Q4 of 25
+ What will be the output of the following code? Assume all the neccessary imports are done.
+
+[java]
+	final class A 
+		{
+			 int i;
+		}	
+		class B extends A 
+		{
+			int j;
+	void display(){
+			System.out.println(j + " " + i);  }
+		}	
+		class Inheritance 
+		{
+			public static void main(String args[])
+			{
+				B obj = new B();
+				obj.display();	 
+			}
+	   }
+[\java]
+
+2 2
+0 0
+Runtime Error
+!Compilation Error: Final class cannot be extended!
+
+
+========================================================================================================
+
+
+Q5 of 25
+What is the output of the following code?
+
+[java]
+	public class Bike {
+		final void ride() {
+			System.out.println("riding");
+		}
+
+		static class KTMBike extends Bike {
+
+			 void ride() {
+				System.out.println("KTMBike");
+			}
+
+			public static void main(String[] args) {
+				Bike b = new Bike();
+				b.ride();
+
+				KTMBike k = new KTMBike();
+				k.ride();
+			}
+		}
+	}
+[\java]
+
+riding riding
+riding KTMBike
+KTMBike riding
+!Compilation error:Cannot override the final method from bike.!
+
+
+
+========================================================================================================
+
+
+Q6 of 25
+What is the output of the following code?
+
+[java]
+	public class Car {
+		static int speed = 90;
+
+		void run() {
+			final int speed = 400;
+			System.out.println(speed);
+		}
+
+		public static void main(String[] args) {
+			Car c = new Car();
+			c.run();
+		}
+	}
+[\java] 
+
+Unresolved compilation problem: The final field Car.speed cannot be reassigned
+90
+!400!
+None of the given options
+
+
+========================================================================================================
+
+
+Q7 of 25
+What is the output of the following code?
+
+[java]
+	class Tester {
+		public static void main(String a[]) {
+			if (true) {
+				if (!true) {
+					System.out.println(false);
+				} else {
+					System.out.println(1);
+				}
+			} else {
+				System.out.println(true);
+
+			}
+		}
+	}
+[\java]
+
+false
+true
+!1!
+Compilation Error
+
+
+========================================================================================================
+
+
+Q8 of 25
+Given a regular expression:
+
+([^\\W]+)-[Infosys]+
+Which of the following strings will match with it?
+
+!Infosys-syso!	//its the first 2
+!ABCD123-syso!
+!@#$-Info
+!@#$-Infosys
+
+========================================================================================================
+
+Q9 of 25
+What is the output of the following code?
+
+[java]
+	public class MainClass 
+	{
+		MainClass() {
+			System.out.println("DEFAULT CONSTRUCTOR");
+		}
+		public MainClass(float a) {
+			System.out.println("PUBLIC CONSTRUCTOR");
+		}
+		protected MainClass(int a) {
+			System.out.println("PROTECTED CONSTRUCTOR");
+		}
+		private MainClass(double a) {
+			System.out.println("PRIVATE CONSTRUCTOR");
+		}
+		public static void main(String[] args) {
+			new MainClass(4.0);
+		}
+	}
+[\java]
+
+PUBLIC CONSTRUCTOR
+PROTECTED CONSTRUCTOR
+!PRIVATE CONSTRUCTOR!
+Unresolved Compilation Error: Constructor cannot be declared private
+
+
+========================================================================================================
+
+
+Q10 of 25
+Consider the code given below:
+
+[java]
+	public class GarbageCollection {
+		public static void main(String[] args) {
+
+			GarbageCollection gc1 = new GarbageCollection();
+			gc1.toString();
+
+			gc1 = null;
+
+			gc1 = new GarbageCollection();
+			gc1.display(gc1);
+
+			GarbageCollection gc2 = new GarbageCollection();
+			gc2.collector(gc2);
+		}
+
+		public int collector(GarbageCollection garbage) {
+
+			garbage = new GarbageCollection();
+			return 0;
+		}
+
+		static GarbageCollection display(GarbageCollection g) {
+
+			g = new GarbageCollection();
+			return g;
+
+		}
+	}
+[\java]
+
+How many objects are eligible for garbage collection?
+
+!3!
+2
+4
+1
+
+
+========================================================================================================
+
+
+Q11 of 25
+What is the output of the following code?
+
+[java]
+	class XYZ
+	{
+	 public void m1 (int i,float f)
+	 {
+	  System.out.println(" int float method");
+	 }
+	 
+	 public void m1(float f,int i)
+	  {
+	  System.out.println("float int method");
+	  }
+	 
+	  public static void main(String[]args)
+	  {
+		XYZ s=new XYZ();
+			s.m1(20,20);
+	  }
+	}
+[\java] 
+
+int float method
+float int method
+!Compiletime error: The method m1(int, float) is ambiguous for the type XYZ!
+Run time error
+
+
+========================================================================================================
+
+
+Q12 of 25
+What is the output of the following code?
+
+[java]
+	public class StringTester {
+
+		public static void main(String[] args) {
+			String s1 = "Alpha", s2 = "Beta", s3 = "Theta";
+			s1.toLowerCase();
+			s3.replace("Beta", "Alpha");
+			System.out.print((s1.equals(s2)) + "," + (!s2.equals(s3)));
+		}
+	}
+[\java]
+
+false,false
+!false, true!
+true,true
+true,false
+
+
+========================================================================================================
+
+Q13 of 25
+What is the output of the following code?
+
+[java]
+	class MySample { 
+		protected int count; 
+		public void displayDetails() { 
+			System.out.print(count + " "); 
+		}
+	}
+	public class Sample { 
+		public void displayDetails() { 
+			count = 4;	// Line 1
+			System.out.println(count + " "); 
+		} 
+		public static void main(String args[]) { 
+			MySample mySample = new MySample(); 
+			mySample.displayDetails(); 
+			mySample = new Sample();  
+			mySample.displayDetails(); 
+		}
+	}
+[\java]
+
+0 4
+4 4
+4 0
+!Compilation Error at Line 1: cannot resolve a symbol count!
+
+
+========================================================================================================
+
+
+Q14 of 25
+What will be the output of following code?
+
+[java]
+	class TryOut
+	{
+		String str1 = "x";
+		public TryOut()
+		{
+			myMethod();
+		}
+		void myMethod()
+		{
+			System.out.print(str1+" ");
+		}
+	}
+	class TryOut1 extends TryOut
+	{
+	   String str2 = "y";
+		void myMethod()
+		{
+			System.out.print(str2+" ");
+		}
+		public static void main(String[] args)
+		{
+			TryOut1 mySub = new TryOut1();
+			mySub.myMethod();
+	   }
+	}
+[\java]
+
+!null y!
+null null
+x y
+None of the above
+
+
+========================================================================================================
+
+
+Q15 of 25
+What is the output of below code snippet?
+
+[java]
+	class A
+	{
+	 
+	}
+	 
+	enum Enums extends A
+	{
+		ABC, BCD, CDE, DEF;
+	}
+[\java]
+
+Check if code is violating any PMD rules and choose a valid option:
+
+Runtime Error
+!Compilation Error!
+It runs successfully
+EnumNotDefined Exception
+
+
+========================================================================================================
+
+
+Q16 of 25
+Consider the following Tester class containing the method isPrime() which checks whether a given number is prime or not:
+
+[java]
+	public class Tester {
+		public boolean isPrime(int data) {
+			boolean isPrime = true;
+			int lastValue = (int) Math.sqrt(data);
+			for(int i = 2; i <= lastValue; ++i) {
+				if (data%i == 0) {
+					isPrime = false;
+					break;
+				}
+			}
+			return isPrime;
+		}
+	}
+	Which among the following test cases will pass?
+
+	public class TesterTest {
+		private Tester tester = new Tester();
+
+		@Test
+		public void test1() {
+			Assert.assertTrue(tester.isPrime(7));
+		}
+		@Test
+		public void test2() {
+			Assert.assertTrue(tester.isPrime(2));
+		}
+		@Test
+		public void test3() {
+			Assert.assertFalse(tester.isPrime(8));
+		}
+
+	}
+[\java]
+ 
+
+Only test1() and test3()
+Only test1()
+!All test cases will pass!
+Only test2()
+
+
+========================================================================================================
+
+
+Q17 of 25
+What is the output of the following code?
+
+[java]
+	public class ExceptionTest {
+
+		public static void main(String args[]) {
+			try {
+				int arr[] = new int[6];
+				System.out.println("Accessing the element:" + arr[3]);
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println("Exception thrown  :" + e);
+			}
+			System.out.println("Some Error");
+		}
+	}
+[\java]
+
+!Accessing the element:0 Some Error!
+Some Error
+Exception thrown :java.lang.ArrayIndexOutOfBoundsException: 3 Some Error
+Exception thrown :java.lang.ArrayIndexOutOfBoundsException: 3
+
+
+========================================================================================================
+
+
+Q18 of 25
+What will be the output of the following code?
+
+[java]
+	public class Testing {
+		public void method(int... a) {
+			System.out.println(a.length);	
+		}
+		
+		public void method(int[] a) {
+			System.out.println(a[5]);
+		}
+		
+		public static void main(String[] args) {
+			Testing tester=new Testing ();
+			int [] arr={10,20,30,40,50};
+			tester.method(arr);
+		}
+	}
+[\java]
+
+5
+ArrayIndexOutOfBoundsException
+50
+!Compilation Error since methods have been duplicated!
+
+
+========================================================================================================
+
+
+Q19 of 25
+ Which of these is a correct way of defining generic method?
+
+<T1, T2, …, Tn> name(T1, T2, …, Tn) { /* … */ }
+!public <T1, T2, …, Tn> name { /* … */ }!
+class <T1, T2, …, Tn> name[T1, T2, …, Tn] { /* … */ }
+<T1, T2, …, Tn> name{T1, T2, …, Tn} { /* … */ }
+
+
+========================================================================================================
+
+
+Q20 of 25
+What will be the output of the following code?
+
+[java]
+	class Conversion 
+	{
+			public static void main(String args[]) 
+			{
+				double a = 295.04;
+				int  b = 300;
+				byte c = (byte) a;
+				byte d = (byte) b;
+				System.out.println(c + " "  + d);
+			} 
+	}
+[\java]
+
+38 43
+!39 44! //idk why
+295 300
+295.04 300
+
+
+========================================================================================================
+
+
+Q21 of 25
+What is the output of below code snippet? Assume that all the necessary imports are done.
+
+[java]
+	class Enum{
+		enum Season{
+			WINTER, SPRING, SUMMER, FALL;
+			private int value;
+		}
+
+		public static void main(String args[]){
+			for (Season s : Season.values())  
+			System.out.println(s+" "+s.value);  
+		}
+	}
+[\java]
+
+
+
+!WINTER 0 SPRING 0 SUMMER 0 FALL 0!
+WINTER 0 SPRING 1 SUMMER 2 FALL 3
+Compliation Error
+Runtime Error
+
+========================================================================================================
+
+
+Q22 of 25
+ Which of the following pattern(s) will satisfy the requirement
+“The string should only contain one or more alphanumeric characters”
+ 
+[\\W]+
+!\\w+!
+![\\w\\s]+!
+!.*!
+
+
+========================================================================================================
+
+
+Q23 of 25
+Which of the following are valid array declarations?
+
+int firstArray[5];
+!int secondArray[];!
+!int []thirdArray=new int[6];!
+int lastArray[2]=new int[2];
+
+
+========================================================================================================
+
+
+Q24 of 25
+What is the output of below code snippet? Assume that all the necessary imports are done.
+
+[java]
+	public class SetTester
+	{
+		public static void main(String[] args) 
+			{
+			Set s = new HashSet();
+			s.add(new Long(10));
+			s.add(new Integer(10));
+			for(Object object : s)
+					{
+				System.out.println("test - "+object);
+			}
+		}
+	}
+[\java]
+
+!Test - 10 Test - 10!
+Test – 10
+Runtime Exception
+Compilation Failure
+
+
+========================================================================================================
+
+
+Q25 of 25
+ How to remove duplicate value from List?
+
+!HashSet<String> listToSet = new HashSet<String>(duplicateList);!
+HashSet<String> listToSet = duplicateList.toSet();
+HashSet<String> listToSet = Collections.convertToSet(duplicateList);
+HashSet<String> listToSet = duplicateList.getSet();
