@@ -1,0 +1,131 @@
+UI
+	
+
+business Logic
+	- Functional
+	- Non-Functional (Taken care of by AppServer , TOMCAT, WEBLOGIC, and tons of others)
+		. Such as concurrency
+		. Security
+		. Portability
+		. Scalability
+
+Persistance Layer (JDBC, JPA, HyperNet)
+		. Converts and communicates between different langauges and Database
+
+	UI -> Business(Service) -> Persistance -> Database
+
+	- (UI)			Collect the data
+	- (Service)		Validate the data then run the logic
+	- (Persistance)	
+
+Login Example:
+	i.		Puts in Username and Password in UI
+	ii.		Submits to Service Layer
+	iii.	Service Layer gets data from Database through Persistance
+	iv.		After validating the credentials, and allows login or rejects
+
+Server-side presentation:
+	- How the server presents information
+Client-side presentation:
+	- How the client sees the information
+
+	CustomerLoginServiceImpl	Service
+	CustomerLoginDAOImpl		DAO stands for Persistance
+	CustomerLoginController		Recieves from UI and gives to Service
+	CustomerLogin				
+	UserInterface				Web Interface
+
+	Model vs. Bean Class
+	Model attributes and getters/setters
+	Bean 
+
+	Moves from (Theory of how we use objects to move data from layer to layer)
+		UI (create object of CustomerLogin) -> Controller (CustomerLogin class is passed to Controller)
+		Controller (create object of ServiceClass) -> Service Layer (runs method of ServiceClass using object)
+		Service Layer(Data/Object move data to the method called) -> DAO (run DAO to connect and retrieve info)
+			(Create DAO Object)
+		DAO (Returns a CustomerLogin Object) -> Service Class(Recieves CustomerLogin Object)
+		Service Class (Compares both CustomerLogin Objects) -> Controller(Receives the result of validation)
+		Controller (Passes information to UI) -> UI (displays the information to the User)
+
+	*Differences between Class and Impl*
+		Impl is seperate from the class because it is a Core Class that has business logic that should not be exposed
+		Chill & Grill is the Maven
+
+	*Jar files should be automatic*
+	*Manual building is discouraged, it should automatically create a package*
+
+-----------------------------------------------------------
+	Maven
+-----------------------------------------------------------
+*Manual Build Process is Slow*
+- Complete build process must be automated
+- Generating documentation from the source code.
+- Compiling source code.
+- Packaging the compiled code.
+- Deploying the packaged code.
+
+*Advantages*
+- Uniformity in adding of dependencies and testing the code.
+- Improving the Code Quality
+- Accelerating dependency addition and compilation
+- Eliminating redundant tasks (like configuring PMD and adding jars)
+- Saving time and money -  for the reasons listed above
+
+*Standards*
+- 10 lines of code 3 lines of comments
+
+*Maven Dependencies*
+- POM.XML contains the dependencies
+	. XML is the universal way of representing data
+- Pre Processer database
+- Automatically downloads the required dependencies and then builds the files and makes it a Packaged and Tested Artifact
+
+*Maven Project Workspace*
+- src/main/java – It contains the source code of the application (all the .java files).
+- src/test/java – It contains the test case files of the application (JUnit files).
+- src/main/resources – It contains the different resources files needed for the execution of the code (Log4j.xml, configuration.properties).
+	. - All errors should come from PROPERTIES (also called resource bundle)
+- target – It will contain the final result of the Maven build.
+
+*EAR WAR JAR*
+- Enterprise Archive
+- Web Archive
+- Java Archive
+- All available in target folder
+
+*XML*
+- Should one root element
+- Can have any amount of sub elements
+
+*Repositories*
+- Local
+- Org Wide]
+- Maven Central Repository
+
+*Dependencies*
+- Says what is needed from the repositories
+
+*Plugins*
+- Plugins for frameworks such as JUnit and PMD
+
+!plugins!
+!model version!
+!repositories!
+!groupId!
+!dependencies!
+!build!
+!artifactId!
+
+
+-----------------------------------------------------------
+    (Spring) IOC Inversion of Control Container
+-----------------------------------------------------------
+
+- Objects lifecycles managed by Spring is Spring beans or beans
+- Beanfactory
+- ApplicationContext
+@Compenent	}
+@Repository	} -> All are the same
+@Service	}
+@Controller	} - Whenever the request comes from ui the only part that should direct the program MVC(Model View Controller) get and direct requests

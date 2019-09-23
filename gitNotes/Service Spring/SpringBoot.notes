@@ -1,0 +1,40 @@
+-----------------------------------------------------------
+	Dependency Injection
+-----------------------------------------------------------
+
+- @Autowired
+- @Autowired creates the object that you need to use.
+- If not found it throws #NoSuchBeanDefinitionException#
+- If there is more than one bean available it will throw an Exception that more than one bean is available for autowiring
+- @Autowired at the setter or method level as protection against destructive or unwanted methods (Setter Injection)
+- @Autowired on the constructor to call constructor to inject dependency
+
+-----------------------------------------------------------
+	SpringBoot
+-----------------------------------------------------------
+
+- Whatever is configured in pom.xml, only those will be downloaded by Spring Framework
+- Dependency and Configuration management is hard, and these tasks will be handed over to SpringBoot
+- Spring is an opinionated Framework.
+	-- Opinionated: means that the framework tends to push you into their way of doing things
+	-- main Spring Boot features
+		. SpringBoot uses Tomcat as their default web container
+		. Starter Dependencies
+		. Automatic configuration
+		. Spring Boot Actuator
+		. Easy-to-use embedded servlet container support
+	-- SpringBoot common starters
+		. spring-boot-starter			- This is the core starter which includes support for auto-configuration, logging and YAML.
+		. spring-boot-starter-aop		- This starter is used for aspect-oriented programming with Spring AOP and AspectJ.
+		. spring-boot-starter-data-jdbc	- This starter is used for Spring Data JDBC.
+		. spring-boot-starter-data-jpa	- This starter is used for Spring Data JPA with Hibernate.
+		. spring-boot-starter-web		- This starter is used for for building web application using Spring MVC  and Spring REST. It also provides Tomcat as the default embedded container.
+		. spring-boot-starter-test		- This starter provides support for testing Spring Boot applications using libraries such as JUnit, Hamcrest and Mockito.
+		. spring-boot-starter-log4j2	- This starter provides support for using Log4j2 for logging. It is an alternative to spring-boot-starter-logging.
+		. spring-boot-starter-actuator	- This starter provides support for using Spring Boot Actuator.
+	-- SpringBoot vs. Spring
+		. SpringBoot
+		. Spring
+	-- *Creating a SpringBoot Application*
+		1. Spring Initializr is used in this course
+	

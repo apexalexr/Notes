@@ -1,0 +1,104 @@
+-----------------------------------------------------------
+	Object Class
+-----------------------------------------------------------
+
+- Everything from int -> String -> Custom Classes extend Object class
+- Whenever you override .equals() method you need to override .hashCode();
+	. Only rule with this is if .equals() returns true the two objects hashCode's must be equal as well
+	. The reverse does not need to be true
+- .toString() is another method that can be overridden in order to display a string that makes sense for your
+	custom object
+
+-----------------------------------------------------------
+	Strings
+-----------------------------------------------------------
+
+- Strings are immutable, meaning they cannot be altered or changed
+- string += "x"; is an illusion that the string is being altered however what is really happening is that a new String
+	is being made and assigned to that reference
+	. What_You_See:				string += "x";
+	. What_Actually_Happens:	string = string.concat("x");
+								-----------or---------------
+								string = string + "x"; //As you can see it is actually being made and reassigned.
+- .intern() checks the literal pool
+- "SomeString" <- literals come from the same pool however new String("SomeString") <- Creates a new one even if it already
+	exists
+- .concat() always creates a new String instead of checking the pool
+- .equals() compares the contents of the String
+- == compares the memory values of the String
+- Non-Literal + Literal means the same as .concat() it creates another one without checking the pool
+
+==================================================================
+!.equals() and .hashCode() are not overridden!
+	<StringBuffer:> thread-safe and mutable
+		- Capacity can be dynamically increased
+		- Faster and less memory during manipulations
+		- append(), insert(), delete(), reverse()
+
+	<StringBuilder:> thread-unsafe (a little faster) and mutable
+		- Same as above
+==================================================================
+
+-----------------------------------------------------------
+	Wrapper Classes
+-----------------------------------------------------------
+
+- Used to represent primitive values as objects
+- Character wrapper = new Character('x');
+- Character wrapper = 'x';	//Java5 and up includes autoboxing
+- char c = wrapper 			//This is unboxing to remove a wrapper
+- Integer autoboxing only returns literals within -128 to 127 otherwise it creates new objects
+
+-----------------------------------------------------------
+	Regex
+-----------------------------------------------------------
+
+	[Regex]
+		(http://|https://)(www.)?[\\w]+(\\.com|\\.org|\\.net)	//These two are equally valid
+		https?://(www.)?[\\w[^_]]+\\.(com|org|net)
+	[\Regex]
+
+	Checkout regexr.com
+
+	#CheatSheet#[]	
+		Character Classes
+		.			any character except newline
+		\w\d\s		word, digit, whitespace
+		\W\D\S		not word, digit, whitespace
+		[abc]		any of a, b, or c
+		[^abc]		not a, b, or c
+		[a-g]		character between a & g
+
+		Anchors
+		^abc$		start / end of the string
+		\b\B		word, not-word boundary
+
+		Escaped Characters
+		\.\*\\		escaped special characters
+		\t\n\r		tab, linefeed, carriage return
+
+		Groups & Lookaround
+		(abc)		capture group
+		\1			backreference to group #1
+		(?:abc)		non-capturing group
+		(?=abc)		positive lookahead
+		(?!abc)		negative lookahead
+
+		Quantifiers & Alternation
+		a*a+a?		0 or more, 1 or more, 0 or 1
+		a{5}a{2,}	exactly five, two or more
+		a{1,3}		between one & three
+		a+?a{2,}?	match as few as possible
+		ab|cd		match ab or cd
+				[\]
+
+
+
+
+!Extra notes taken during Day 3 Assessment
+FInal class cannot be extended
+Generic Typing
+	defining a generic methods
+what happens when you typecast byte
+Hashsets
+enums all enums implicitly extend java.lang.enum therefore cannot extend anything else

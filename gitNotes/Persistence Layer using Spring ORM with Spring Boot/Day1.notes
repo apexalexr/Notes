@@ -1,0 +1,67 @@
+-----------------------------------------------------------
+    Developing Persistance Layer
+-----------------------------------------------------------
+
+Spring supports data access technologies JDBC, Hibernate, or JPA
+1. Spring JDBC
+2. Spring ORM
+3. Spring Data access (Not covered)
+
+#General JDBC code steps
+1. Obtain database connection
+2. Create and execute query
+3. Process query
+4. Exception handling/Rollback
+5. Close database resources like connections
+
+*Problems*
+- Connection Management
+	. If you do not close connections it will use more resources and impact performance
+- Exception handling
+	. Throws SQLException, which is forced to be handled, and amy lead to other Problems
+	. The error messages are specific to the vendor so it is hard to write portable error message code
+- Code Duplication
+	. Too mch repetitive code
+
+4 packages for Spring JDBC is
+	- org.springframework.jdbc.core
+	- org.springframework.jdbc.datasource
+	- org.springframework.jdbc.object
+	- org.springframework.jdbc.support
+
+Going to SrpingBoot.io and make the project with JDBC and database
+Change
+	1. spring.datasource.url
+	2. spring.datasource.username
+	3. spring.datasource.password
+
+	-----------------------------------------------------------
+	    JDBC Templates
+	-----------------------------------------------------------
+	- Avoids common errors such as forgetting to close connections
+		. Executes SQL queries
+		. Performs iteration over ResultSet Instances and extracts the ResultSet
+		. Catches JDBC exceptions and translates into more informative definited in org.springframework.dao packages
+
+	-----------------------------------------------------------
+	    Object Relational Impedance Mismatch
+	-----------------------------------------------------------
+	. Granularity: 		More objects than tables
+	. Subtype: 			Inheritance is not defined in database
+	. Identity: 		.equals() vs. row equals each other
+	. Assocations: 		Foreign key is not the same as unidirectional object model reference
+	. Data_Navigation: 	navigate through (.) vs. navigating using joins
+	
+	hypernet is implementation jpa is specification
+
+	-----------------------------------------------------------
+	    JPA
+	-----------------------------------------------------------
+	- Everything you use in Entity needs to be in the xml
+	- Tags
+	- Configure xml
+	- Write DAO Layer
+	- All entity classes need @ Entity
+	- Model class (Cannot be persistant) vs. entity class
+
+	

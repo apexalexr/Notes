@@ -1,0 +1,16 @@
+-----------------------------------------------------------
+    Date/Time
+-----------------------------------------------------------
+
+- LocalDate
+	. String pattern = "dd-MMM-yyyy";
+	. return LocalDate.parse(date, DateTimeFormatter.ofPattern(pattern)); //This will throw a exception if it is not parsable
+- LocalTime
+- LocalDateTime
+
+remember localdate.now
+
+
+isLeapYear ?? 
+
+

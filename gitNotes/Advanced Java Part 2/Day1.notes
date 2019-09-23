@@ -1,0 +1,80 @@
+-----------------------------------------------------------
+	Lists
+-----------------------------------------------------------
+
+	- Lists are like arrays, however they do not need their indexes specified.
+	- Adding and Removing elements are easier.
+	- List Class is an interface and has multiple implementations such as ArrayList
+	- Advantages:
+		. dynamic size
+		. easy removing items
+		. duplicate elements are allowed
+		. methods:
+			-- add(int index, E element);
+			-- boolean addAll(int index, Collection c);
+			-- E get(int index);
+			-- E remove(int index);
+			-- ListIterator<E> listIterator();
+		. Types:
+			-- ArrayList
+				.. Array implementations
+				.. Random fast access
+				.. Slow addition and removal
+			-- LinkedList
+				.. Doubly Linked List
+				.. Slower search because sequential
+				.. Addition and removal of elements is faster
+	- equals() will only return true if same order and same elements
+	- Linkedlists add additional methods
+	- Can't use primitive datatypes, only wrappers
+
+
+-----------------------------------------------------------
+    Collections
+-----------------------------------------------------------
+
+	- Collections------------------>(Interface)
+		. (List)
+			-- ArrayList
+			-- LinkedList
+			-- Vector
+		. (Queue)
+			-- LinkedList
+		. (Set)
+			-- (SortedSet)
+				.. (NavigableSet)
+					--- TreeSet
+			-- HashSet
+				.. LinkedHashSet
+
+	- (Map)
+		. HashMap
+			-- LinkedHashMap
+		. (SortedMap)
+			-- TreeMap
+		. (ConcurrentMap)
+			-- ConcurrentHashMap
+
+	- Iterators should be used when you want to edit the contents during a loop
+		. Trying to edit during an enchanced for loop would throw ConcurrentModificationException
+		. ListIterator can move forwards and backwards using next() and previous()
+	- Sort sorts ascending
+	- Reverse reverses the current list
+
+	WHY DOESN"T IT WORK????
+	CAUSE YOU TRY TO BE FANCY ._.!
+
+-----------------------------------------------------------
+    Enums
+-----------------------------------------------------------
+
+- Enums are compile time constants.
+- Used to make sure only a certain set of items can exist.
+- Used as as validator
+
+
+	No Vector or Concurrent HashMap
+
+	Map does not extend collections so it does not have an iterator, keysets give a set that can use iterator
+
+	Learn a little more about generics

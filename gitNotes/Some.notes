@@ -1,0 +1,14 @@
+-----------------------------------------------------------
+	JDBC
+-----------------------------------------------------------
+
+!Clients ask about serialization!
+
+- Try with resource is like a do while statement
+- Do not connect to database from service must be DAO or Repository
+- executeupdate() and executequery()
+- Have to create a new method for orders
+- Normally you should close connect
+- Auto commit and rollback
+
+- JDBC template is a very important concept How to replace JDBC with JDBC template
